@@ -12,4 +12,4 @@ Calculation can be interrupted and resumed at any time, because at the end of ea
 
 ### Usage
 
-./copnucalc <filename>
+./copnucalc &lt;filename&gt;
