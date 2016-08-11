@@ -127,7 +127,7 @@ int main (int argc, char * argv[])
 	
 	for (i = counter; i > 0; i--)
 	{
-		fprintf(fp, "%" PRIu64 "\n", ram_buffer[found-i]);
+		fprintf(fp, "%" PRIu64 "\n", ram_buffer[found - i]);
 	}
 	
 	fclose(fp);
