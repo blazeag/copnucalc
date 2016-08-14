@@ -1,5 +1,5 @@
 /*****************************************************************************
- * CoPNuCalc - Compulsive Prime Numbers Calculator
+ * CoPNuF - Compulsive Prime Numbers Finder
  *****************************************************************************
  * (c) 2006 Andrea Gardoni <andrea.gardonitwentyfour@gmail.com> minus 24
  *
