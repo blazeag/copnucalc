@@ -1,4 +1,4 @@
-# CoPNuCalc - Compulsive Prime Numbers Calculator
+# CoPNuF - Compulsive Prime Numbers Finder
 
 This senseless but unrestrainable C program allows you to compulsively calculate all prime numbers that your RAM can hold.
 The basic algorithm consists in checking all odd numbers from 3 to infinity. Each number is divided by all primes already found, which are smaller than its half. If none of them is a divider, the number is prime and is put into the list.
