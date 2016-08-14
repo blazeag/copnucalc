@@ -89,7 +89,7 @@ int main (int argc, char * argv[])
 		for (j = 0; j < found; j++)
 		{
 			// If currently compared prime number is more than the square root of current number, it is a prime number
-			if ((j * j) >= i) break;
+			if ((ram_buffer[j] * ram_buffer[j]) >= i) break;
 			
 			// If the number is divisible by the current prime number, it is not prime
 			if ((i % ram_buffer[j]) == 0)
