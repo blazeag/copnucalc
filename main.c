@@ -37,7 +37,7 @@ typedef unsigned short bool;
 // --------------------------------------------
 int main (int argc, char * argv[])
 {
-	uint64_t *ram_buffer, half;
+	uint64_t *ram_buffer;
 	char *filename;
 	FILE *fp;
 	uint64_t i, j, counter, found;
@@ -85,14 +85,11 @@ int main (int argc, char * argv[])
 		i = i + 2;
 		not_divisible = TRUE;
 		
-		// Calculate half the number
-		half = (int) (i + 1) / 2;
-		
 		// Try to divide the current number for every prime number found so far
 		for (j = 0; j < found; j++)
 		{
-			// If currently compared prime number is more than the half of the current number, it is a prime number
-			if (ram_buffer[j] > half) break;
+			// If currently compared prime number is more than the square root of current number, it is a prime number
+			if ((j * j) >= i) break;
 			
 			// If the number is divisible by the current prime number, it is not prime
 			if ((i % ram_buffer[j]) == 0)
@@ -102,7 +99,7 @@ int main (int argc, char * argv[])
 			}
 		}
 		
-		// If number was found not divisible by all prime number found so far smaller that its half, it's a prime number
+		// If number was found not divisible by all prime number found so far smaller that its one third, it's a prime number
 		if (not_divisible)
 		{
 			found++;
