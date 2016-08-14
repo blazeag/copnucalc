@@ -14,7 +14,7 @@
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this program;
+ * along with this program;r
  * if not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
  *****************************************************************************/
 
@@ -72,7 +72,7 @@ int main (int argc, char * argv[])
 	// -------------------------------
 	start_time();
 	
-	printf("Calculation in progress. Press Return key to stop... ");
+	printf("Calculation in progress. Press Enter to stop... ");
 	fflush(stdout);
 	
 	counter = found;			// Currently found numbers counter
