@@ -42,9 +42,9 @@ int main (int argc, char * argv[])
 	uint64_t i, j, counter, found;
 	bool not_divisible;
 	double time;
-	uint64_t MAXNUM;
+	uint64_t max_primes;
 	
-	MAXNUM = 10000000; // Max findable numbers (used for memory allocation)
+	max_primes = 16000000000; // Max findable numbers (used for memory allocation)
 	
 	
 	
@@ -52,21 +52,29 @@ int main (int argc, char * argv[])
 	// -------------------------------
 	read_parameters(argc, argv, &filename);
 	
-	// Allocate memory for prime numbers array
-	ram_buffer = (uint64_t*) calloc(MAXNUM, sizeof(uint64_t));
+	// Allocate memory for prime numbers array (about half to all free RAM)
+	do
+	{
+		max_primes /= 2;
+		ram_buffer = (uint64_t*) calloc(max_primes, sizeof(uint64_t));
+	}
+	while (ram_buffer == NULL || max_primes <= 1000);
 	
-	if (ram_buffer == NULL)
+	// If there isn't enough memory to allocate 1000 numbers, give up
+	if (max_primes <= 1000)
 	{
 		printf("Insufficient physical memory.\n");
 		exit(-1);
 	}
 	
-	
+	printf("Maximum findable numbers: %" PRIu64 "\n", max_primes);
+
+
 	
 	// Load prime numbers into memory
 	// if specified file is not empty 
 	// -------------------------------
-	found = restore(filename, ram_buffer);
+	found = restore(filename, ram_buffer, max_primes);
 	
 	
 	
@@ -108,7 +116,7 @@ int main (int argc, char * argv[])
 			ram_buffer[found - 1] = i;
 		}
 	}
-	while (! kbhit() && found < (MAXNUM - 1));
+	while (! kbhit() && found < (max_primes - 1));
 	
 	time = prn_time();
 	printf("Stopped!\n");

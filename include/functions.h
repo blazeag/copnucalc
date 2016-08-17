@@ -15,7 +15,7 @@ static time_keeper tk;
 // Prototypes
 // --------------------------------------------
 void read_parameters (int argc, char *argv[], char **filename);
-uint64_t restore(char *filename, uint64_t *ram_buffer);
+uint64_t restore(char *filename, uint64_t *ram_buffer, uint64_t max_primes);
 void show_statistics (uint64_t found, uint64_t counter, uint64_t *ram_buffer, double time);
 int kbhit(void);
 void start_time(void);
@@ -72,7 +72,7 @@ void read_parameters (int argc, char *argv[], char **filename)
 // IN  char *filename
 // OUT uint64_t *ram_buffer
 // ====================================================================
-uint64_t restore(char *filename, uint64_t *ram_buffer)
+uint64_t restore(char *filename, uint64_t *ram_buffer, uint64_t max_primes)
 {
 	uint64_t i, temp;
 	FILE *fp;
@@ -83,6 +83,12 @@ uint64_t restore(char *filename, uint64_t *ram_buffer)
 	
 	for (i = 0; ; i++)
 	{
+		if (i >= max_primes)
+		{
+			printf("Not enough RAM to restore numbers!\n");
+			exit(-1);
+		}
+
 		fscanf(fp, "%" PRIu64, &temp);
 		if (feof(fp)) break;
 		
