@@ -25,7 +25,6 @@
 #include <inttypes.h>
 #include "include/functions.h"
 
-#define MAXNUM 100000000 // Max findable numbers (used for memory allocation)
 #define TRUE 1
 #define FALSE !TRUE
 
@@ -43,6 +42,9 @@ int main (int argc, char * argv[])
 	uint64_t i, j, counter, found;
 	bool not_divisible;
 	double time;
+	uint64_t MAXNUM;
+	
+	MAXNUM = 10000000; // Max findable numbers (used for memory allocation)
 	
 	
 	
